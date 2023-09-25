@@ -9,11 +9,11 @@ from data.dataset import data_loader
 from data.preprocess import feature_encoding
 from utils.metrics import compute_bpr_loss, get_metrics
 
-LATENT_DIM = 8
-N_LAYERS = 3
+LATENT_DIM = 4
+N_LAYERS = 1
 
 EPOCHS = 1
-BATCH_SIZE = 128
+BATCH_SIZE = 1024
 DECAY = 0.0001
 LR = 0.005
 K = 20
@@ -124,7 +124,9 @@ if __name__ == '__main__':
         os.mkdir("weights")
     torch.save(user_emb, "weights/user_embedding.pt")
     torch.save(item_emb, "weights/item_embedding.pt")
+    print("Weights saved.")
     if not os.path.isdir("out"):
         os.mkdir("out")
     torch.save(light_bpr, "out/bpr.pt")
     torch.save(light_reg, "out/reg.pt")
+    
